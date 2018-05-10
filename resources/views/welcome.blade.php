@@ -1,115 +1,22 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+@extends('layouts.app')
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <!-- Fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-  <style>
-    #app{
-        width:100%;
-    }
-    a{
-        text-decoration:none;
-        width: 100%;
-    }
-    .navigation-drawer{
-        width: 200px !important;
-        margin-top: 40px !important;
-    }
-    .toolbar__content{
-        height: 40px !important;
-    }
-    main.content{
-        width: 100%;
-    }
-    ul.breadcrumbs li a,ul.breadcrumbs li{
-        color:#333 !important;
-    }
-    * {
-  font-family: 'Arial';
-  font-size: 12px;
-}
-
-
-.btn-img {
-  background-color: #d3394c;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: bold;
-  padding: 15px 35px;
-  position: relative;
-}
-
-.btn-img:hover {
-  background-color: #722040;
-}
-
-input[type="file"] {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.helper {
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
-  width: 0;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.hidden.image {
-  display: inline-block !important;
-}
-
-.display-inline {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.img {
-  border: 1px solid #f6f6f6;
-  display: inline-block;
-  height: auto;
-  max-height: 80%;
-  max-width: 80%;
-  width: auto;
-}
-
-.drop {
-  background-color: #f2f2f2;
-  border: 1px dashed #ccc;
-  background-color: #f6f6f6;
-  border-radius: 2px;
-  padding: 15px;
-  height: 100%;
-  max-height: 400px;
-  max-width: 600px;
-  width: 100%;
-}
-
-  </style>
-    </head>
-    <body>
-        <div id="app"></div>
-    </body>
-
-</html>
+@section('content')
+@include('layouts.slider')
+<div class="row center-align">
+  <!-- <div class="card-panel cyan lighten-3" style="height: 200px;">
+    <h3 class="center-align">This is a card panel with a teal lighten-2 class</h3>
+  </div> -->
+    <div class="col s12 m4 left-align">
+      <h5>What is Lorem Ipsum?</h5>
+<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="col s12 m4 left-align">
+      <h5>What is Lorem Ipsum?</h5>
+<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="col s12 m4 left-align">
+<h5>What is Lorem Ipsum?</h5>
+<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+</div>
+@endsection

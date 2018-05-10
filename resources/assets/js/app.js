@@ -66,11 +66,13 @@ const app = new Vue({
 	components: { App },
 }).$mount('#app')
 
-const login_app = new Vue({
-  // el: '#root',
-  router,
-  template: `
-  <login-app></login-app>
-  `,
-  components: { LoginApp },
-}).$mount('#login-app')
+//if(this.$route.page=='login'){
+  const login_app = new Vue({
+    // el: '#root',
+    router,
+    template: `
+    <login-app></login-app>
+    `,
+    components: { LoginApp },
+  }).$mount('#login-app')
+//}

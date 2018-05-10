@@ -19,6 +19,7 @@ class CreatePostTable extends Migration
             $table->text('body');
             $table->boolean('status')->default(true);
             $table->integer('numofview')->default(0);
+            $table->text('image');
             $table->timestamps();
         });
     }

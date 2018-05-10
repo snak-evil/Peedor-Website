@@ -46,12 +46,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
-        Post::create($data);
+        $save=Post::create($data);
         return response()->json([
             'status'=>true,
             'message'=>'Data successfully saved.',
-            'req'=>$data
+            'req'=>$data,
+            'id'=>$save->id
         ]);
+
     }
 
     /**

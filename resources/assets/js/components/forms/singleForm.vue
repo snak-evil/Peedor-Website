@@ -98,12 +98,13 @@
 							this.alert=true
 							this.res.status=res.data.status
 							this.res.message=res.data.message
+							this.$router.push('/admin'+this.reqUrl+'act/'+res.data.id)
 						}
 					})
 				}
 			},
 			cancel(){
-				window.history.back();
+				this.$router.push('/admin'+this.reqUrl+'list')
 			}
 		}
 	}

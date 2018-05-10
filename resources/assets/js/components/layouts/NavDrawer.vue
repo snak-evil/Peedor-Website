@@ -37,35 +37,32 @@
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile
-              v-for="(child, i) in item.children"
-              :key="i"
-              @click=""
-            >
+            <router-link class="list__tile list__tile--link" v-for="(child, i) in item.children" :key="i" @click="" :to="child.path">
+            <v-list-tile>
               <v-list-tile-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-				          <router-link :to="child.path">
                     {{ child.text }}
-                  </router-link>
                 </v-list-tile-title>
               </v-list-tile-content>
+           
             </v-list-tile>
+          </router-link>
           </v-list-group>
-          <v-list-tile v-else @click="" :key="item.text">
+        <router-link class="list__tile list__tile--link" v-else @click="" :key="item.text" :to="item.path">
+          <v-list-tile style="margin-left:-20px !important;">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>
-                <router-link :to="item.path">
                   {{ item.text }}
-                </router-link>
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+        </router-link>
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -94,6 +91,11 @@
           </v-avatar>
         </v-btn>
         <v-list>
+          <v-list-tile v-for="(item,i) in profiles" @click="" :key="i">
+            <v-list-tile-title>
+              {{item}}
+            </v-list-tile-title>
+          </v-list-tile>
           <v-list-tile @click="">
             <v-list-tile-title onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Log Out</v-list-tile-title>
@@ -108,25 +110,15 @@
   export default {
     data: () => ({
       drawer: null,
-      items: [
-        { icon: 'dashboard', text: 'Dashboard',path:'/admin/dashboard' },
-        // { icon: 'mode_edit', text: 'Post',path:'/admin/post/list' },
-        { icon: 'monetization_on', text: 'Pricing',path:'/admin/pricing' },
-        {
-          icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          preicon:'mode_edit',
-          text: 'Post',
-          model: false,
-          children: [
-            { icon: 'add',text: 'Write Post',path:'/admin/post/create' },
-            { icon: 'remove_red_eye',text: 'Post List',path:'/admin/post/list' },
-          ]
-        }
-      ],
     }),
     props: [
-      'profiles'
+      'profiles',
+      'items'
     ]
   }
 </script>
+<style type="text/css">
+  div.menu__content{
+    margin-left: -30px !important;
+  }
+</style>

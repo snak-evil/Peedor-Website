@@ -11,18 +11,16 @@
 |
 */
 Route::group(['middleware' => 'auth'], function(){
-
-    //Route::get('admin', function () { $user = \Auth::user(); dd($user); });
 	Route::get('/admin/{any?}',function(){
 	    return view('home');
 	})->where(['any'=>'.*']);
 });
 
-// Route::get('/', function () {
-  
-// });  
+Route::get('/', function () {
+	return view('welcome');
+});  
 
 Auth::routes();
-//Route::post('/login', 'AuthController@login')->name('login');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::Resource('/post', 'PostController');

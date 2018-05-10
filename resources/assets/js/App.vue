@@ -1,6 +1,6 @@
 <template>
   <v-app id="aspire">
-	<nav-drawer :drawer="drawer"/>
+	<nav-drawer :drawer="drawer" :items="items" :profiles="profiles"/>
 	<page-content/>
   </v-app>
 </template>
@@ -13,10 +13,28 @@ export default {
 	NavDrawer,PageContent
   },
   data(){
-	return{
-		drawer:null,
-		fullscreen:true
-	}
+  	return{
+  		drawer:null,
+  		fullscreen:true,
+      items: [
+        { icon: 'dashboard', text: 'Dashboard',path:'/admin/dashboard' },
+        { icon: 'monetization_on', text: 'Pricing',path:'/admin/pricing' },
+        {
+          icon: 'keyboard_arrow_up',
+          'icon-alt': 'keyboard_arrow_down',
+          preicon:'mode_edit',
+          text: 'Post',
+          model: false,
+          children: [
+            { icon: 'add',text: 'Write Post',path:'/admin/post/create' },
+            { icon: 'remove_red_eye',text: 'Post List',path:'/admin/post/list' },
+          ]
+        }
+      ],
+      profiles:[
+        'Demo'
+      ]
+  	}
   }
 }
 </script>
