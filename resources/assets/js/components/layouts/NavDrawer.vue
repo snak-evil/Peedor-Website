@@ -91,7 +91,7 @@
           </v-avatar>
         </v-btn>
         <v-list>
-          <v-list-tile v-for="(item,i) in profiles" @click="" :key="i">
+          <v-list-tile v-for="(item,i) in authInfo" @click="" :key="i">
             <v-list-tile-title>
               {{item}}
             </v-list-tile-title>
@@ -107,14 +107,28 @@
 </template>
 
 <script>
+  import Flash from '../../helper/flash'
   export default {
     data: () => ({
       drawer: null,
+      username:null,
+      flash:Flash.state,
+      authInfo:[]
     }),
     props: [
       'profiles',
       'items'
-    ]
+    ],
+    created(){
+      axios.get('/username').then(
+        response => {
+          Flash.setLoginName(response.data.username)
+          this.authInfo.push(this.flash.username)
+        }
+      ).catch(function (error) { 
+        console.log(error); 
+      });
+    }
   }
 </script>
 <style type="text/css">

@@ -5,6 +5,7 @@
   </v-app>
 </template>
 <script>
+  import Flash from './helper/flash'
 import NavDrawer from './components/layouts/NavDrawer'
 import PageContent from './components/layouts/Content'
 export default {
@@ -31,10 +32,15 @@ export default {
           ]
         }
       ],
-      profiles:[
-        'Demo'
-      ]
+      flash:Flash.state,
+      profiles:[],
+      username:'',
   	}
+  },
+  created(){
+    Flash.setLoginName()
+    this.username=this.flash.username
+    console.log(this.flash.username)
   }
 }
 </script>

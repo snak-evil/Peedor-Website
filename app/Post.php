@@ -12,6 +12,8 @@ class Post extends Model
     	'title',
     	'body',
     	'status',
-    	'numofview'
+    	'numofview',
+    	'image',
+    	'menu_id'
     ];
 }

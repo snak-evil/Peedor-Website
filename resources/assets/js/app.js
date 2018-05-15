@@ -52,19 +52,22 @@ const router = new VueRouter({
   				{ path:'act/:id',name:'PostForm',component:PostForm,props:true }
   			]
   		},
-      {path:'/login',name:'login',component:LoginApp},
+      {path:'/admin/login',name:'login',component:LoginApp},
   		{path:'/admin/*',name:'404NotFound',component:PageNotFound}
   	]
 })
 
-const app = new Vue({
-	// el: '#root',
-	router,
-	template: `
-	<app></app>
-	`,
-	components: { App },
-}).$mount('#app')
+
+  const app = new Vue({
+    // el: '#root',
+    router,
+    template: `
+    <app></app>
+    `,
+    components: { App },
+  }).$mount('#app')
+
+
 
 //if(this.$route.page=='login'){
   const login_app = new Vue({

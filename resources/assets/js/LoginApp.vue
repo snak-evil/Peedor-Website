@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+  import Flash from './helper/flash'
   export default {
     data(){
       return{
@@ -46,6 +46,7 @@
           password:''
         },
         errors:{},
+        flash:Flash.state
       }
      
     },
@@ -55,9 +56,12 @@
     methods:{
       login(){
         axios.post('/login',this.form).then((res)=>{
-            //if(res.data.auth==true){
+            if(res.data.auth==true){
               window.location.reload(true);
-            //}
+              //Flash.setLoginName=res.data.name
+              //this.$router.push('/admin')
+              //console.log(res.data)
+            }
         }).catch((err) => {
           if(err.response.status === 422) {
             this.errors=err.response.data.errors

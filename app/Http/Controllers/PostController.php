@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\SiteMenu;
+use App\Http\Controllers\common\ImageMaker;
 
 class PostController extends Controller
 {
@@ -45,7 +47,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->all();
+        $fill = (new Post)->getFillable();
+
+        $data=array_only($request->all(),$fill);
+
+        $data['image']=(new ImageMaker)->base64ToImage('images\\gallery',$data['image']);
+        // dd($data);
         $save=Post::create($data);
         return response()->json([
             'status'=>true,
@@ -76,7 +83,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post=Post::find($id);
-        return response()->json($post);
+        $menus=SiteMenu::all(['id as value','text']);
+        return response()->json(['post'=>$post,'menus'=>$menus]);
     }
 
     /**
@@ -88,7 +96,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=$request->all();
+        $fill = (new Post)->getFillable();
+
+        $data=array_only($request->all(),$fill);
+        $image = Post::find($id);
+        if(@$data['image'] != @$image->image){
+            $imageDelete=(new ImageMaker)->deleteFile(@$image->image);//delete old image after update data
+        }
+        $data['image']=(new ImageMaker)->base64ToImage('images\\gallery',$data['image']);
         Post::where('id',$id)
         ->update($data);
         return response()->json([
